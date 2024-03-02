@@ -23,7 +23,7 @@ export const AppContext = createContext<AppContextType | null>(null);
 
 export const AppProvider = ({ children }: any) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [showLoader, setShowLoader] = useState<boolean>(false);
+  const [showLoader, setShowLoader] = useState<boolean>(true);
   const [userLogged, setUserLogged] = useState<{}>({});
   const [search, setSearch] = useState('');
   const [job, setJob] = useState<Job>({
@@ -39,8 +39,6 @@ export const AppProvider = ({ children }: any) => {
   const [jobsLiked, setJobsLiked] = useState<Job[]>([]);
 
   const loadJobs = async () => {
-    setShowLoader(true);
-
     let url = `${environment.apiAdzunaURL}/${currentPage}?app_id=${environment.idAdzunaAPI}&app_key=${environment.secretAdzunaAPI}&content-type=application/json`;
     url += `&title_only=Desenvolvedor`;
 
@@ -61,15 +59,15 @@ export const AppProvider = ({ children }: any) => {
         });
         if (jobs.length === 0) {
           setJobs(data);
-          setShowLoader(!true);
+          setShowLoader(false);
         } else if (jobs.length >= 10) {
           setJobs((prevJobs) => [...prevJobs, ...data]);
-          setShowLoader(!true);
         }
+
         setJob(data[0]);
       })
       .catch((error) => {
-        setShowLoader(!true);
+        setShowLoader(false);
         console.error('Error:', error);
       });
   };
