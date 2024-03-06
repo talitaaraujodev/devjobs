@@ -42,7 +42,7 @@ export function ProfilePage() {
             name="birth-date"
             id="birth-date"
             className="p-2 rounded-lg  md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
-            value={user.profile.birthDate ? format(user.profile?.birthDate, 'dd/MM/yyyy', { locale: ptBR }) : ''}
+            value={user.profile?.birthDate ? format(user.profile?.birthDate, 'dd/MM/yyyy', { locale: ptBR }) : ''}
           />
         </div>
         <div className="flex flex-col p-1">

@@ -1,4 +1,4 @@
-## Devjobs
+## Devjobs 💜
 
 Aplicação afim de visualizar jobs de Desenvolvores utilizando a API da Adzune
 
