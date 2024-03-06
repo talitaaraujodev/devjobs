@@ -8,7 +8,7 @@ Aplicação afim de visualizar jobs de Desenvolvores utilizando a API da Adzune
 - É necessário se registrar para ter as credenciais e acessar a API da Adzune;
 - Crie um arquivo .env seguindo a estrutura do .env.example;
 
-## ✨ APis Utilizadas
+## ✨ APIs Externas Utilizadas
 
 - <a href="https://viacep.com.br" target="_blank">CEP</a>
 - <a href="https://developer.adzuna.com"  target="_blank">Adzune</a>
