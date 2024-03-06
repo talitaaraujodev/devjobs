@@ -15,7 +15,7 @@ Aplicação afim de visualizar jobs de Desenvolvores utilizando a API da Adzune
 
 ### 🔧 Instalação
 
-Execute:
+**Execute:**
 
 ```bash
 npm i
@@ -23,13 +23,13 @@ npm i
 
 ### ⚙️ Executando os testes
 
-Execute:
+**Execute:**
 
 ```bash
 npm run cypress:run
 ```
 
-ou
+**ou**
 
 ```bash
 npm run cypress:open
@@ -37,7 +37,7 @@ npm run cypress:open
 
 ### 🚀 Execução
 
-Execute:
+**Execute:**
 
 ```bash
 npm run dev
