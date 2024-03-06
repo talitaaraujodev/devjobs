@@ -91,11 +91,13 @@ export function LoginPage() {
               className="font-medium text-[#5964e0] hover:cursor-pointer transition-all hover:underline"
               onClick={redirect}
               type="button"
+              id="btn-register"
             >
               Registre-se
             </button>
           </div>
           <button
+            id="btn-login"
             type="submit"
             className="bg-[#5964e0] w-full rounded-lg text-white text-base p-3 font-semibold mt-1 hover:bg-[#5a63d3] transition-all"
           >

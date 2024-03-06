@@ -1,6 +1,6 @@
 import { utils } from '../utils';
 
-const request = async (url: string, method: string, contentType: string, sufix?: string, body?: any) => {
+const request = async (url: string, method: string, contentType: string, sufix: string, body?: any) => {
   try {
     const headersConfig = new Headers();
 
@@ -21,16 +21,16 @@ const request = async (url: string, method: string, contentType: string, sufix?:
     if (token) {
       headersConfig.set('Authorization', `Bearer ${token}`);
     }
-    const requestUrl = sufix ? `${url}${sufix}` : url;
+    const requestUrl = `${url}${sufix}`;
     const response = await fetch(requestUrl, fetchConfig);
     if (response.status === 401) {
       utils.setToken('');
       window.location.href = '/login';
-      return null; // ou lançar uma exceção, dependendo do seu fluxo de aplicativo
+      return;
     }
     return response.json();
   } catch (error) {
-    console.error('Erro na requisição:', error);
+    console.error('Erro ao realizar requisição requisição:', error);
   }
 };
 export default request;

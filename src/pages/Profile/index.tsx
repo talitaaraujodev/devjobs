@@ -1,23 +1,24 @@
 import { useContext } from 'react';
 import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale/pt-BR';
 import { AppContext, AppContextType } from '../../contexts/AppContext';
 import { utils } from '../../utils';
 
 export function ProfilePage() {
   const { userLogged } = useContext(AppContext) as AppContextType;
+  const user = { ...userLogged };
 
-  const name = String(userLogged?.name);
-
+  const name = String(user?.name);
   const index = name.indexOf(' ');
   const firstLetterName = name.charAt(0).toLowerCase();
   const secondLetterName = name.charAt(index + 1).toLowerCase();
 
-  const userName = `${firstLetterName.toUpperCase()}${secondLetterName.toUpperCase()}`;
+  const username = `${firstLetterName.toUpperCase()}${secondLetterName.toUpperCase()}`;
 
   return (
     <div className="flex flex-col justify-center items-center py-12 px-4">
       <div className="rounded-full p-5 uppercase text-white bg-[#5964e0] text-3xl font-bold">
-        <h2>{userName}</h2>
+        <h2>{username}</h2>
       </div>
       <form action="" method="post">
         <div className="flex flex-col p-2">
@@ -29,7 +30,7 @@ export function ProfilePage() {
             name="name"
             id="name"
             className="p-2 rounded-lg md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
-            value={userLogged.name}
+            value={user.name}
           />
         </div>
         <div className="flex flex-col p-1">
@@ -41,7 +42,7 @@ export function ProfilePage() {
             name="birth-date"
             id="birth-date"
             className="p-2 rounded-lg  md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
-            value={format(userLogged.profile?.birthDate, 'dd/MM/yyyy')}
+            value={user.profile.birthDate ? format(user.profile?.birthDate, 'dd/MM/yyyy', { locale: ptBR }) : ''}
           />
         </div>
         <div className="flex flex-col p-1">
@@ -53,7 +54,7 @@ export function ProfilePage() {
             name="email"
             id="email"
             className="p-2 rounded-lg  md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
-            value={userLogged.email}
+            value={user.email}
           />
         </div>
         <div className="flex flex-col p-1">
@@ -65,7 +66,7 @@ export function ProfilePage() {
             name="phone"
             id="phone"
             className="p-2 rounded-lg  md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
-            value={utils.maskPhone(userLogged.profile?.phone)}
+            value={utils.maskPhone(user.profile?.phone)}
           />
         </div>
         <div className="flex flex-col p-1">
@@ -77,7 +78,7 @@ export function ProfilePage() {
             name="cpf"
             id="cpf"
             className="p-2 rounded-lg  md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
-            value={utils.maskCPF(userLogged.cpf)}
+            value={utils.maskCPF(user.cpf)}
           />
         </div>
         <div className="flex flex-col p-1">
@@ -89,12 +90,12 @@ export function ProfilePage() {
             id="status-civil"
             className="p-2 rounded-lg  md:w-96 w-80 outline-none border focus:border-[#5964e0] md:ml-0 ml-2"
           >
-            <option selected value={userLogged.profile?.statusCivil}>
-              {userLogged.profile?.statusCivil === 'SINGLE'
+            <option selected value={user.profile?.statusCivil}>
+              {user.profile?.statusCivil === 'SINGLE'
                 ? utils.statusCivilType.single
-                : userLogged.profile?.statusCivil === 'MARRIED'
+                : user.profile?.statusCivil === 'MARRIED'
                   ? utils.statusCivilType.married
-                  : userLogged.profile?.statusCivil === 'DIVORCED'
+                  : user.profile?.statusCivil === 'DIVORCED'
                     ? utils.statusCivilType.divorced
                     : utils.statusCivilType.widowed}
             </option>
